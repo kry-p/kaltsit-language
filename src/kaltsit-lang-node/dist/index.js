@@ -1,4 +1,5 @@
 import fs from "fs";
+import { Command } from "commander";
 import { CONTROL_STATEMENTS, CALCULATE_STATEMENTS } from "./constants";
 
 const calculator = {
@@ -6,11 +7,11 @@ const calculator = {
   1: (o1, o2) => o1 - o2,
   2: (o1, o2) => o1 * o2,
   3: (o1, o2) => {
-    if (o2 == 0) throw new Error("Error: 0으로 나누기.. 대체 왜...");
+    if (o2 == 0) throw new Error("0으로 나누기.. 대체 왜...");
     return o1 / o2;
   },
   4: (o1, o2) => {
-    if (o2 == 0) throw new Error("Error: 0으로 나누기.. 대체 왜...");
+    if (o2 == 0) throw new Error("0으로 나누기.. 대체 왜...");
     return o1 % o2;
   },
 };
@@ -20,10 +21,9 @@ const read = (path) => {
     try {
       fs.accessSync(path);
     } catch (e) {
-      throw new Error(`Error: ${path}... 그 파일에 대해선 아직 말해줄 수 없다.`);
+      throw new Error(`${path}... 그 파일에 대해선 아직 말해줄 수 없다.`);
     }
-    const result = execute(fs.readFileSync(path, "utf-8"));
-    console.log(result);
+    execute(fs.readFileSync(path, "utf-8"));
   } catch (e) {
     process.stderr.write(`${e.message}\n`);
   }
@@ -135,15 +135,19 @@ const execute = (code) => {
   while (!statements[pointer].startsWith("이 이야기는 그만하도록 하지")) {
     const statement = statements[pointer++];
     if (statement.length > 0) {
-      const evaluated = parse(statement);
-      if (evaluated) {
-        console.log(consoleOutput);
-        return evaluated;
-      }
+      parse(statement);
+      process.stdout.write(consoleOutput);
+      consoleOutput = "";
     }
   }
-  return consoleOutput;
 };
 
-// run
-if (process.argv[2]) read(process.argv[2]);
+const program = new Command();
+program
+  .name("kaltsit")
+  .argument("<filename>")
+  .action((file) => {
+    if (process.argv[2]) read(file);
+  });
+
+program.parse();
