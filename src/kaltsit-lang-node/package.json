@@ -1,0 +1,10 @@
+{
+  "name": "kaltsit-lang-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^17.0.42",
+    "esm": "^3.2.25"
+  }
+}
