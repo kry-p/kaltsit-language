@@ -22,11 +22,10 @@ export const execute = (code) => {
     const controlExists = checkControlExists(statement);
     if (controlExists) {
       if (statement.includes("네가 원하는 답은 해 주지 않겠다")) return returns(statement, pointer);
-      if (statement.includes("그럴수는 없다")) pointer = goto(statement, pointer);
-      if (statement.includes("그렇다면")) {
+      else if (statement.includes("그렇다면")) {
         const next = condition(statement, pointer, variables);
         if (next.isAccepted) parse(next.next);
-      }
+      } else if (statement.includes("그럴수는 없다")) pointer = goto(statement, pointer);
     } else {
       const { calcExists, currentCalc } = checkCalc(statement);
 

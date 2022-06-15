@@ -32,6 +32,7 @@ export const condition = (statement, pointer, variables) => {
   const splitted = splitCommand(statement, " ");
   const otherStringIncludes = checkOnlyDots(removeTargetString(splitted[0], "그렇다면"));
   const index = calculateNumber(splitted[0].split("그렇다면")[0]);
+
   const next = {
     isAccepted: variables.get(index) === 0,
     next: removeTargetString(statement, `${splitted[0]} `),
