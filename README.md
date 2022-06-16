@@ -1,5 +1,9 @@
 # kaltsit-language
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkry-p%2Fkaltsit-language&count_bg=%239CBB85&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+<img src="https://img.shields.io/github/license/kry-p/kaltsit-language"/>
+<img src="https://img.shields.io/npm/dm/kaltsit-lang-node" />
+
 <h2 align="center">
   <img src="https://user-images.githubusercontent.com/66104509/173565111-87c35ba5-50d3-439b-bfd6-e90e435e0f29.jpg" width="200" height="200"/>
   <br/>
@@ -63,7 +67,7 @@
 ### 변수의 할당과 출력
 
 변수는 인덱스를 통해 접근할 수 있습니다. 인덱스는 정수입니다.  
-`....모르는건가..` 와 같이 작성하며, 왼쪽 점의 개수는 값(정수) 오른쪽 점의 개수(자연수)는 변수가 저장될 인덱스입니다.
+`....모르는건가..` 와 같이 작성하며, 왼쪽 점의 개수는 값(정수) 오른쪽 점의 개수는 변수가 저장될 인덱스입니다.
 
 `그렇군`을 사용하여 변수를 출력할 수 있습니다.  
 `그렇군`앞의 점 개수를 인덱스로 하는 변수의 값을 출력합니다.  
@@ -110,6 +114,22 @@
 ### 기타
 
 `몰?루는건가` 를 입력하여 강제 줄바꿈을 할 수 있습니다. `몰?루는건가` 뒤의 모든 문자열은 무시됩니다.
+
+## 오류 처리
+
+인터프리터가 발생시키는 오류는 아래와 같습니다.
+| 오류 코드 | 내용 |
+| ---------- | ---------------------------------------------------------- |
+|UNKNOWN_ERROR|알 수 없는 오류입니다.|
+|ENTRY_INVALID|소스 코드의 시작점을 정의할 수 없습니다.|
+|EOF_INVALID|소스 코드의 끝이 올바르지 않습니다.|
+|SYNTAX_ERROR_ARITHMETIC|연산 구문 오류입니다.|
+|SYNTAX_ERROR_GOTO|분기 이동 구문 오류입니다.|
+|SYNTAX_ERROR_IF|조건문 구문 오류입니다.|
+|SYNTAX_ERROR_RETURN|반환 구문 오류입니다.|
+|SYNTAX_ERROR_VARIABLE|변수 구문 오류입니다.|
+|VARIABLE_NOT_NATURAL_INDEX|변수의 인덱스는 자연수만 허용됩니다.|
+|ARITHMETIC_NAN|연산 결과가 숫자가 아닙니다.|
 
 ## 예제
 
@@ -207,3 +227,5 @@ Hello world!를 출력하는 예제 켈시어 코드입니다. 변수 재할당�
   확실하게 알 수 없습니다. 확인이 필요합니다.
 
 ## TODO
+
+- 앞으로 나올 수 있는 벌레 잡기
