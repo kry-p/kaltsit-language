@@ -199,7 +199,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Kaltsitlang source code file
-*.kaltsit
-
 # End of https://www.toptal.com/developers/gitignore/api/node,macos,windows
