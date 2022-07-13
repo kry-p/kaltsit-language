@@ -16,7 +16,7 @@
 # 비교적 정상적인 설명
 
 모바일 게임 명일방주의 켈시어 밈에 [엄랭](https://github.com/rycont/umjunsik-lang)을 접목해 만든 프로그래밍 언어, 켈시어입니다.  
-[켈시어 편지](https://gall.dcinside.com/mgallery/board/view/?id=mibj&no=2852474)에서 모티브를 따 왔으며, 많은 부분을 엄랭에 기반하여 작성하였으나 세부 문법에는 차이가 있습니다.
+많은 부분을 엄랭에 기반하여 작성하였으나 세부 문법에는 차이가 있습니다.
 
 현재 사용 가능한 구현체는 Node.js이며, 해당 패키지의 CLI 명령어로 출력을 확인할 수 있습니다.  
 [npm 저장소](https://www.npmjs.com/package/kaltsit-lang-node)
@@ -31,6 +31,7 @@
 | 2022.06.15 | Node.js 구현체 버그 수정 및 변수 재할당 기능 추가 (v1.0.1) |
 | 2022.06.15 | Node.js 구현체 버그 수정 (v1.0.2)                          |
 | 2022.06.16 | 예제 소스 추가 및 README 수정                              |
+| 2022.07.13 | TypeScript로 리팩토링 및 버그 수정 (v1.1.2)                |
 
 ## 사용 가이드 (Node.js)
 
