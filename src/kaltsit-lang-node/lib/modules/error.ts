@@ -4,7 +4,12 @@
  * 2022 kry-p
  * https://github.com/kry-p/kaltsit-language
  */
-const ERROR_CODE = {
+
+type ErrorType = {
+  [key: string]: string;
+};
+
+const ERROR_CODE: ErrorType = {
   UNKNOWN_ERROR: "알 수 없는 오류입니다.",
   ENTRY_INVALID: "소스 코드의 시작점을 정의할 수 없습니다.",
   EOF_INVALID: "소스 코드의 끝이 올바르지 않습니다.",
@@ -28,9 +33,9 @@ const ERROR_STRINGS = [
   "네가 알 필요는 없다.",
 ];
 
-export const throwError = (pointer, errorCode) => {
+export const throwError = (pointer: number, errorCode: string) => {
   const currentError = ERROR_CODE[errorCode] ? ERROR_CODE[errorCode] : ERROR_CODE.UNKNOWN_ERROR;
   return new Error(
-    `Error occured on line ${pointer}: ${ERROR_STRINGS[Math.round(Math.random() * ERROR_STRINGS.length)]}\n\nPRTS: ${currentError}`
+    `Error occured on line ${pointer}: ${ERROR_STRINGS[Math.round(Math.random() * (ERROR_STRINGS.length - 1))]}\n\nPRTS: ${currentError}`
   );
 };

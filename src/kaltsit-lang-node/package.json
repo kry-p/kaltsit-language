@@ -1,11 +1,11 @@
 {
   "name": "kaltsit-lang-node",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "description": "A programming language implementation for Kaltsit-language.",
-  "main": "dist/index.js",
+  "main": "bin/index.js",
   "author": "kry-p",
   "bin": {
-    "kaltsit": "bin/cli.js"
+    "kaltsit": "bin/index.js"
   },
   "license": "MIT",
   "keywords": [
@@ -14,14 +14,18 @@
     "kaltsit-language"
   ],
   "files": [
-    "cli",
-    "dist"
+    "bin"
   ],
   "dependencies": {
-    "commander": "^9.3.0",
-    "esm": "^3.2.25"
+    "commander": "^9.3.0"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/node": "^18.0.3",
+    "typescript": "^4.7.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   }
 }

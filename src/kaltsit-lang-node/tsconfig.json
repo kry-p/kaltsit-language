@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "./bin",
+    "target": "ES5",
+    "module": "CommonJS",
+    "strict": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "useUnknownInCatchVariables": false
+  }
+}

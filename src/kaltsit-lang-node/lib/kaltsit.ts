@@ -5,24 +5,28 @@
  * https://github.com/kry-p/kaltsit-language
  */
 import { checkCalc, checkControlExists } from "./modules/string";
-import { condition, goto, returns, validate, calculate, substitute, printout } from "./modules/core";
+import { condition, goto, validate, calculate, substitute, printout } from "./modules/core";
 
-export const execute = (code) => {
+type OptionType = {
+  using: string;
+};
+
+export const execute = (code: string, options: OptionType) => {
   const variables = new Map();
   const statements = code
     .trim()
     .split("\n")
     .map((line) => line.trim());
   let consoleOutput = "";
+  let moduleOutput = "";
   let pointer = 0;
 
   validate(statements);
 
-  const parse = (statement) => {
+  const parse = (statement: string) => {
     const controlExists = checkControlExists(statement);
     if (controlExists) {
-      if (statement.includes("네가 원하는 답은 해 주지 않겠다")) return returns(statement, pointer);
-      else if (statement.includes("그렇다면")) {
+      if (statement.includes("그렇다면")) {
         const next = condition(statement, pointer, variables);
         if (next.isAccepted) parse(next.next);
       } else if (statement.includes("그럴수는 없다")) pointer = goto(statement, pointer);
@@ -55,8 +59,11 @@ export const execute = (code) => {
     const statement = statements[pointer++];
     if (statement.length > 0) {
       parse(statement);
-      process.stdout.write(consoleOutput);
+      if (options.using === "console") process.stdout.write(consoleOutput);
+      if (options.using === "module") moduleOutput += consoleOutput;
       consoleOutput = "";
     }
   }
+
+  if (options.using === "module") return moduleOutput;
 };

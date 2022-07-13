@@ -1,1 +1,5 @@
+# Node.js modules
 node_modules
+
+# TypeScript source code
+lib
